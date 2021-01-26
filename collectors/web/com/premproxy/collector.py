@@ -55,11 +55,11 @@ class Collector(BaseCollectorPremProxyCom):
     __collector__ = True
 
     def __init__(self):
-        super(Collector, self).__init__('https://premproxy.com/list/', 20)
+        super(Collector, self).__init__('https://premproxy.com/list/', 10)
 
 
 class CollectorSocksList(BaseCollectorPremProxyCom):
     __collector__ = True
 
     def __init__(self):
-        super(CollectorSocksList, self).__init__('https://premproxy.com/socks-list/', 20)
+        super(CollectorSocksList, self).__init__('https://premproxy.com/socks-list/', 10)

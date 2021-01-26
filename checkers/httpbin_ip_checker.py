@@ -2,13 +2,17 @@ from checkers.base_checker import BaseChecker, CheckerResult
 import aiohttp
 from json.decoder import JSONDecodeError
 
-from proxy_py.settings import CRAWLER_MACHINE_IP, CRAWLER_MACHINE_PROXY
+from proxy_py.settings import HTTP_PROXY, HTTPS_PROXY
+
+CRAWLER_MACHINE_IP = CRAWLER_PROXY_IP = HTTP_PROXY or "37.139.41.157"
 
 
 class HTTPBinIPChecker(BaseChecker):
     def __init__(self, timeout=None):
         super(htpbin_ip_checker, self).__init__("http://httpbin.org/ip", timeout=timeout)
+
     # TODO could cause db errors because of "value,value" kind of possible return @line 22
+
     async def validate(self, response: aiohttp.ClientResponse, checker_result: CheckerResult) -> bool:
         try:
             json_result = await response.json(content_type=None)

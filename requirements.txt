@@ -21,3 +21,4 @@ peewee~=2.10.2
 setuptools~=51.3.3
 Js2Py~=0.70
 beautifulsoup4~=4.9.3
+dateparser

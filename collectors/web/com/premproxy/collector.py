@@ -1,6 +1,7 @@
 from collectors.pages_collector import PagesCollector
 from lxml import etree
-from py_mini_racer import py_mini_racer
+import js2py
+# from py_mini_racer import py_mini_racer
 
 import lxml.html
 import re
@@ -32,7 +33,7 @@ class BaseCollectorPremProxyCom(PagesCollector):
             match[0]: match[1]
             for match in re.findall(
                 r"\$\('.([a-z0-9]+)'\)\.html\(([0-9]+)\)",
-                py_mini_racer.MiniRacer().execute(code_table),
+                js2py.eval_js(code_table),
             )
         }
         for el in elements:

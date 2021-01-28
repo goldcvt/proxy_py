@@ -14,7 +14,7 @@ class BaseNNTimeCollector(PagesCollector):
     __collector__ = True
 
     def __init__(self, url):
-        super(BaseCollectorPremProxyCom, self).__init__()
+        super(BaseNNTimeCollector, self).__init__()
         self.url = url
 
     async def process_page(self, page_index):

@@ -1,7 +1,7 @@
-aiohttp==2.3.10
+aiohttp~=2.3.10
 aiohttp-jinja2==0.16.0
-aiosocks==0.2.6
-lxml==4.3.1
+aiosocks~=0.2.6
+lxml~=4.3.1
 fake-useragent
 jinja2~=2.11.2
 peewee-async==0.5.12
@@ -21,4 +21,4 @@ peewee~=2.10.2
 setuptools~=51.3.3
 Js2Py~=0.70
 beautifulsoup4~=4.9.3
-dateparser
+dateparser~=1.0.0

@@ -57,8 +57,8 @@ class BaseProxyDBCollector(AbstractCollector):
                     _script
                 )
 
-            country_selector = tree.xpath("//table[@class[contains(., 'table')]]//td//abbr/text()")
-            elements = tree.xpath("//table[@class[contains(., 'table')]]//td/text()")
+            country_selector = tree.xpath("//table[contains(@class, 'table')]//td//abbr/text()")
+            elements = tree.xpath("//table[contains(@class, 'table')]//td/text()")
             if elements[0] == first_element_from_prev_page:
                 break
             # 11

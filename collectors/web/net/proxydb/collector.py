@@ -5,7 +5,7 @@ import http_client
 import lxml.html
 
 
-class BaseProxyDBCollector(AbstractCollector):
+class Collector(AbstractCollector):
     __collector__ = True
 
     def __init__(self):

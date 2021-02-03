@@ -22,9 +22,10 @@ class BaseProxylistsCollector(PagesCollector):
         ips = tree.xpath("//table[@id='proxy_list']//td[@class='left_td']/a[contains(@href, '/ip/')]/text()")
         countries = tree.xpath("//table[@id='proxy_list']//td[@class='left_td']/a[contains(@href, '/country/')]/text()")
         type_ = tree.xpath("//table[@id='proxy_list']//td[position() mod 7 = 0]/text()")
+        transparency = tree.xpath("//table[@id='proxy_list']//td[position() mod 6 = 0]/text()")
 
         for i in range(0, len(countries), 1):
-            if countries[i].find("Russia") == -1:
+            if countries[i].find("Russia") == -1 and transparency[i] != 'Transparent':
                 if type_[i].find("http") != -1:
                     result.append(f"http://{ips[i]}")
                 else:

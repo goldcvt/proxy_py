@@ -11,8 +11,6 @@ import async_requests
 
 
 class BaseNNTimeCollector(PagesCollector):
-    __collector__ = True
-
     def __init__(self, url):
         super(BaseNNTimeCollector, self).__init__()
         self.url = url

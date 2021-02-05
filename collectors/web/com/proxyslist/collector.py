@@ -5,8 +5,6 @@ import http_client
 
 
 class BaseProxylistsCollector(PagesCollector):
-    __collector__ = True
-    
     def __init__(self, url):
         super(BaseProxylistsCollector, self).__init__()
         self.url = url

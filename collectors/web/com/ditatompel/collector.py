@@ -19,8 +19,8 @@ class BaseDitaTompelCollector(PagesCollector):
     @staticmethod
     def parse_from_splash_page(tree):
         # TODO fix ip and port XPATHs
-        ips = tree.xpath("//table[@id='proxyList']//tbody/tr/td[1]/text()") # не то
-        ports = tree.xpath("//table[@id='proxyList']//tbody/tr/td[1]/span[1]/text()") # не то
+        ips = tree.xpath("//table[@id='proxyList']//tbody/tr/td[position() mod 6 = 1]/text()")
+        ports = tree.xpath("//table[@id='proxyList']//tbody/tr/td[position() mod 6 = 1]/span/text()")
         type_ = tree.xpath(
             "//table[@id='proxyList']//tbody//a[contains(@class, 'https://www.ditatompel.com/proxy/type')]/text()"
         )

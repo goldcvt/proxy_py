@@ -18,7 +18,17 @@ class BaseDitaTompelCollector(PagesCollector):
 
     @staticmethod
     def parse_from_splash_page(tree):
-        return []  # TODO return a list, don't forget to filter out RU proxies
+        # TODO fix ip and port XPATHs
+        ips = tree.xpath("//table[@id='proxyList']//tbody/tr/td[1]/text()") # не то
+        ports = tree.xpath("//table[@id='proxyList']//tbody/tr/td[1]/span[1]/text()") # не то
+        type_ = tree.xpath(
+            "//table[@id='proxyList']//tbody//a[contains(@class, 'https://www.ditatompel.com/proxy/type')]/text()"
+        )
+        country = tree.xpath(
+            "//table[@id='proxyList']//tbody//a[contains(@class, 'https://www.ditatompel.com/proxy/country')]/text()"
+        )
+
+        return [str(type_[i] + "://" + ips[i] + ports[i]) for i in range(0, len(type)-1, 1) if country[i] != 'RU']
 
     async def process_page(self, page_index):
         result = []

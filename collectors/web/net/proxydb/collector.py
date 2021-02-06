@@ -41,7 +41,6 @@ class Collector(AbstractCollector):
             local element = splash:select('ul.pagination > button.btn-outline-secondary')
             local bounds = element:bounds()
             assert(element:mouse_click{x=bounds.width/3, y=bounds.height/3})
-            splash:mouse_click(dimensions.x, dimensions.y)
             return splash:html()
         end
         """

@@ -28,13 +28,20 @@ class BaseDitaTompelCollector(PagesCollector):
         resp = await http_client.get_text(url=self.url)
         tree = lxml.html.fromstring(resp)
         result += self.parse_from_splash_page(tree)
-
+        _script = """
+                        local bounds = element:bounds()
+                        assert(element:mouse_click{x=bounds.width/3, y=bounds.height/3})
+                        return splash:html()
+                    end"""
         # and then get every rest of 'em
         for i in range(2, 30, 1):
             # inserting a lua script into the thingie
-            script = f""" {i} """  # we need to know what page to go to
-            url = self.url.split("url")[0] + "{}".format(script) + "url" + self.url.split("url")[1]
-
+            script = f"""
+                function main(splash)
+                    local element = splash:select('li.paginate_button > a.page-link[data-dt-idx="{i}"]')
+                    """  # we need to know what page to go to
+            url = self.url.split("url")[0] + script + _script + "url" + self.url.split("url")[1]
+            # TODO what if there's no ith page?
             resp = await http_client.get_text(url=url)
             tree = lxml.html.fromstring(resp)
 

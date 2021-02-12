@@ -22,10 +22,10 @@ class BaseDitaTompelCollector(PagesCollector):
         ips = tree.xpath("//table[@id='proxyList']//tbody/tr/td[position() mod 6 = 1]/text()")
         ports = tree.xpath("//table[@id='proxyList']//tbody/tr/td[position() mod 6 = 1]/span/text()")
         type_ = tree.xpath(
-            "//table[@id='proxyList']//tbody//a[contains(@class, 'https://www.ditatompel.com/proxy/type')]/text()"
+            "//table[@id='proxyList']//tbody//a[contains(@href, 'https://www.ditatompel.com/proxy/type')]/text()"
         )
         country = tree.xpath(
-            "//table[@id='proxyList']//tbody//a[contains(@class, 'https://www.ditatompel.com/proxy/country')]/text()"
+            "//table[@id='proxyList']//tbody//a[contains(@href, 'https://www.ditatompel.com/proxy/country')]/text()"
         )
 
         return [str(type_[i] + "://" + ips[i] + ports[i]) for i in range(0, len(type)-1, 1) if country[i] != 'RU']

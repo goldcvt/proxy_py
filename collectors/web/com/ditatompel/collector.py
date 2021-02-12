@@ -15,6 +15,7 @@ class BaseDitaTompelCollector(PagesCollector):
         super(BaseCollectorPremProxyCom, self).__init__()
         self.url = url
         self.pages_count = pages_count
+        self.processing_period = 1 * 60 * 60
 
     @staticmethod
     def parse_from_splash_page(tree):

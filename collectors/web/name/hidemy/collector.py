@@ -6,10 +6,9 @@ import lxml.html
 
 
 class BaseHideMyNameCollector(PagesCollector):
-    def __init__(self, url, pages_count):
+    def __init__(self, url):
         super(BaseHideMyNameCollector, self).__init__()
         self.url = url
-        self.pages_count = pages_count
         self.processing_period = 30 * 60
 
     async def process_page(self, page_index):
@@ -31,6 +30,7 @@ class BaseHideMyNameCollector(PagesCollector):
                     result.append(f"{type_[i].split(',')[1]}://{ips[i]}:{ports[i]}")
                 except IndexError:
                     result.append(f"{type_[i].split(',')[0]}://{ips[i]}:{ports[i]}")
+        return result
 
 
 class Collector(BaseHideMyNameCollector):

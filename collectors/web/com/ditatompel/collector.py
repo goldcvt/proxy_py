@@ -12,7 +12,7 @@ import async_requests
 
 class BaseDitaTompelCollector(PagesCollector):
     def __init__(self, url, pages_count):
-        super(BaseCollectorPremProxyCom, self).__init__()
+        super(BaseDitaTompelCollector, self).__init__()
         self.url = url
         self.pages_count = pages_count
         self.processing_period = 1 * 60 * 60

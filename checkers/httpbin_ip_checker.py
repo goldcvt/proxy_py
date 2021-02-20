@@ -2,9 +2,7 @@ from checkers.base_checker import BaseChecker, CheckerResult
 import aiohttp
 from json.decoder import JSONDecodeError
 
-from proxy_py.settings import HTTP_PROXY, HTTPS_PROXY
-
-CRAWLER_MACHINE_IP = CRAWLER_PROXY_IP = HTTP_PROXY or "37.139.41.157"
+from proxy_py.settings import CRAWLER_MACHINE_IP, CRAWLER_PROXY_IP
 
 
 class HTTPBinIPChecker(BaseChecker):

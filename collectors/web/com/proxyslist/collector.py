@@ -2,6 +2,7 @@ from collectors import AbstractCollector, PagesCollector
 
 import lxml.html
 import http_client
+import async_requests
 
 
 class BaseProxylistsCollector(PagesCollector):

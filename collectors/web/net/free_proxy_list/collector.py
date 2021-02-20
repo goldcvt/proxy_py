@@ -16,8 +16,7 @@ class BaseCollectorFreeProxyListNet(AbstractCollector):
         res = await async_requests.get(self.url)
         html = res.text
         tree = lxml.html.fromstring(html)
-        table_element = \
-            tree.xpath(".//table[@id='proxylisttable']")[0]
+        table_element = tree.xpath(".//table[@id='proxylisttable']")[0]
         rows = table_element.xpath('.//tbody/tr')
         for row in rows:
             try:

@@ -26,10 +26,7 @@ class BaseHideMyNameCollector(PagesCollector):
 
         for i in range(0, len(ips)-1, 1):
             if countries[i].find("Russia") == -1:
-                try:
-                    result.append(f"{type_[i].split(',')[1].lower()}://{ips[i]}:{ports[i]}")
-                except IndexError:
-                    result.append(f"{type_[i].split(',')[0].lower()}://{ips[i]}:{ports[i]}")
+                result.append(f"{type_[i].split(',')[0].strip().lower()}://{ips[i]}:{ports[i]}")
         return result
 
 

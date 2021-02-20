@@ -28,10 +28,7 @@ class BaseProxylistsCollector(PagesCollector):
                 if type_[i].find("http") != -1:
                     result.append(f"http://{ips[i]}")
                 else:
-                    try:
-                        result.append(f"{type_[i].split(' ')[1]}://{ips[i]}")
-                    except IndexError:
-                        result.append(f"{type_[i].split(' ')[0]}://{ips[i]}")
+                    result.append(f"{type_[i].split(' ')[0].strip()}://{ips[i]}")
         return result
 
 

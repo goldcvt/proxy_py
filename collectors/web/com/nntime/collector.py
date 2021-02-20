@@ -24,7 +24,7 @@ class BaseNNTimeCollector(PagesCollector):
         html = resp.text
         tree = lxml.html.fromstring(html)
         try:
-            elements = tree.xpath("//table[@class='data']//td")
+            elements = tree.xpath("//table[@class='data']//td[position() mod 6 = 1]")
             elements.pop(0)
 
             port_variables = tree.xpath("//script[text()[contains(., '=')]]/text()")[0].replace("\n", "")
@@ -41,9 +41,9 @@ class BaseNNTimeCollector(PagesCollector):
                 keys = script.replace('document.write(":"+', '').replace(")", "").split("+")
                 port_list += ["".join(str(port_variables[key]) for key in keys)]
 
-            for i in range(0, len(elements) - 1, 6):
-                if elements[i+1].find("Russian") == -1:
-                    results.append(f"{elements[i + 1].text}:{port_list[i // 6]}")
+            for i in range(0, len(elements) - 1, 1):
+                if elements[i].find("Russian") == -1:
+                    results.append(f"{elements[i].text}:{port_list[i]}")
 
         except KeyError:
             pass

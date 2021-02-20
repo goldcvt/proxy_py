@@ -2,7 +2,7 @@ from checkers.base_checker import BaseChecker, CheckerResult
 import aiohttp
 from json.decoder import JSONDecodeError
 
-from proxy_py.settings import CRAWLER_MACHINE_IP, CRAWLER_PROXY_IP
+# from proxy_py.settings import CRAWLER_MACHINE_IP, CRAWLER_PROXY_IP
 
 
 class HTTPBinIPChecker(BaseChecker):
@@ -26,8 +26,8 @@ class HTTPBinIPChecker(BaseChecker):
             return True
         return True
 
-    @staticmethod
-    def strip_if_multiple_detected(ip_string):
-        if CRAWLER_MACHINE_IP not in ip_string.split(",") and CRAWLER_MACHINE_PROXY not in ip_string.split(","):
-            return ip_string[0] # TODO re-make
-        return CRAWLER_MACHINE_IP + "," + CRAWLER_MACHINE_PROXY
+    # @staticmethod
+    # def strip_if_multiple_detected(ip_string):
+    #     if CRAWLER_MACHINE_IP not in ip_string.split(",") and CRAWLER_MACHINE_PROXY not in ip_string.split(","):
+    #         return ip_string[0] # TODO re-make
+    #     return CRAWLER_MACHINE_IP + "," + CRAWLER_MACHINE_PROXY

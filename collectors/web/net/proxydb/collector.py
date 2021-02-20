@@ -56,15 +56,16 @@ class Collector(AbstractCollector):
                     _script
                 )
 
-            country_selector = tree.xpath("//table[contains(@class, 'table')]//td//abbr/text()")
-            elements = tree.xpath("//table[contains(@class, 'table')]//td/text()")
+            country_selector = tree.xpath("//table[contains(@class, 'table')]//td[position() mod 11 = 3]//abbr/text()")
+            elements = tree.xpath("//table[contains(@class, 'table')]//td[position() mod 11 = 1]/text()")
+            proto = tree.xpath("//table[contains(@class, 'table')]//td[position() mod 11 = 5]/text()")
             if elements[0] == first_element_from_prev_page:
                 break
             # 11
-            for i in range(0, len(elements) - 1, 11):
-                if country_selector[i // 11 + 2].find("RU") != -1:
-                    results.append("{}://{}".format(''.join(elements[i + 4].text.strip().split('\t')),
-                                                    elements[i].strip()))
+            for i in range(0, len(elements) - 1, 1):
+                if country_selector[i].find("RU") != -1:
+                    results.append("{}://{}".format(''.join(elements[i].text.strip().split('\t')),
+                                                    proto[i]))
             # ul.pagination > button.btn-outline-secondary
             first_element_from_prev_page = elements[0]
         return result

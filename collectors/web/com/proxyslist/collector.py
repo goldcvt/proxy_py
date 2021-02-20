@@ -20,8 +20,8 @@ class BaseProxylistsCollector(PagesCollector):
         tree = lxml.html.fromstring(html)
         ips = tree.xpath("//table[@id='proxy_list']//td[@class='left_td']/a[contains(@href, '/ip/')]/text()")
         countries = tree.xpath("//table[@id='proxy_list']//td[@class='left_td']/a[contains(@href, '/country/')]/text()")
-        type_ = tree.xpath("//table[@id='proxy_list']//td[position() mod 7 = 0]/text()")
-        transparency = tree.xpath("//table[@id='proxy_list']//td[position() mod 6 = 0]/text()")
+        type_ = tree.xpath("//table[@id='proxy_list']//td[position() mod 8 = 7]/text()")
+        transparency = tree.xpath("//table[@id='proxy_list']//td[position() mod 8 = 6]/text()")
 
         for i in range(0, len(countries), 1):
             if countries[i].find("Russia") == -1 and transparency[i] != 'Transparent':

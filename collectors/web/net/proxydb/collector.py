@@ -9,7 +9,7 @@ class Collector(AbstractCollector):
     __collector__ = True
 
     def __init__(self):
-        super(BaseProxyDBCollector, self).__init__()
+        super(Collector, self).__init__()
         self.processing_period = 30 * 60
 
     async def collect(self):

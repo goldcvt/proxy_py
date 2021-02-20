@@ -26,7 +26,7 @@ class BaseKabakCollector(PagesCollector):
 
         for i in range(0, len(ports)-1, 1):
             if countries[i] != '/proxy-in-russia':
-                result.append(f"{type_[i].lower()}://{ips}:{ports}")
+                result.append(f"{type_[i].lower()}://{ips[i]}:{ports[i]}")
         return result
 
 

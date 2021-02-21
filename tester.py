@@ -3,6 +3,7 @@ import argparse
 import asyncio
 import importlib
 import sys
+import http_client
 
 from collectors.web.com.ditatompel.collector import Collector as DitaCollector
 from collectors.web.com.nntime.collector import Collector as NNtimeCollector
@@ -25,5 +26,6 @@ async def main():
     except NameError:
         res = await collector.collect()
     print(res)
+    await http_client.HttpClient.clean()
 
 asyncio.run(main())

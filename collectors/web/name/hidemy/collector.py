@@ -35,4 +35,4 @@ class Collector(BaseHideMyNameCollector):
     
     def __init__(self):
         super(Collector, self).__init__("http://localhost:8050/render.html?filters=none&timeout=10&url="
-                                        "https://hidemy.name/en/proxy-list/?anon=234#list")
+                                        "https://hidemy.name/en/proxy-list/?anon=234#list", 20)

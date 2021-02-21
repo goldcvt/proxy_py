@@ -20,8 +20,7 @@ class BaseNNTimeCollector(PagesCollector):
         if page_index > 0:
             self.url += '%02d.htm' % (page_index + 1,)
 
-        resp = await async_requests.get(url=self.url)
-        html = resp.text
+        html = await http_client.get_text(url=self.url)
         tree = lxml.html.fromstring(html)
         try:
             elements = tree.xpath("//table[@class='data']//td[position() mod 6 = 1]")

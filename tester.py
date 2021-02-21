@@ -4,6 +4,7 @@ import asyncio
 import importlib
 import sys
 import http_client
+import traceback
 
 from collectors.web.com.ditatompel.collector import Collector as DitaCollector
 from collectors.web.com.nntime.collector import Collector as NNtimeCollector
@@ -23,14 +24,18 @@ print(collector)
 async def main():
     try:
         res = await collector.process_page(1)
+        print(res)
     except AttributeError:
         try:
             res = await collector.collect()
+            print(res)
         except Exception:
+            traceback.print_exc()
             await http_client.HttpClient.clean()
     except Exception:
+        traceback.print_exc()
         await http_client.HttpClient.clean()
     await http_client.HttpClient.clean()
-    print(res)
+
 
 asyncio.run(main())

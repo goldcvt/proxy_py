@@ -21,8 +21,9 @@ print(collector)
 
 async def main():
     try:
-        await collector.process_page(1)
+        res = await collector.process_page(1)
     except NameError:
-        await collector.collect()
+        res = await collector.collect()
+    print(res)
 
 asyncio.run(main())

@@ -15,7 +15,7 @@ from collectors.web.top.kabak.collector import Collector as KabakCollector
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--collector', action='store', dest='collector', help='Path to collector')
 args = parser.parse_args()
-collector = globals()[args.collector]
+collector = globals()[args.collector]()
 print(collector)
 
 

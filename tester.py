@@ -25,10 +25,12 @@ async def main():
     try:
         res = await collector.process_page(1)
         print(res)
+        print(len(res))
     except AttributeError:
         try:
             res = await collector.collect()
             print(res)
+            print(len(res))
         except Exception:
             traceback.print_exc()
             await http_client.HttpClient.clean()

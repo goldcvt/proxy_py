@@ -1,4 +1,4 @@
-# import uvloop
+import uvloop
 import argparse
 import asyncio
 import importlib
@@ -11,7 +11,7 @@ from collectors.web.net.proxydb.collector import Collector as ProxyDBCollector
 from collectors.web.top.kabak.collector import Collector as KabakCollector
 
 
-# uvloop.install()
+uvloop.install()
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--collector', action='store', dest='collector', help='Path to collector')
 args = parser.parse_args()
@@ -19,7 +19,10 @@ collector = globals()[args.collector]()
 print(collector)
 
 
-# async def main():
-#     globals()[args.collector]
-#
-# asyncio.run(main())
+async def main():
+    try:
+        await collector.process_page(1)
+    except NameError:
+        await collector.collect()
+
+asyncio.run(main())

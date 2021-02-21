@@ -44,7 +44,7 @@ class Collector(AbstractCollector):
             return splash:html()
         end
         """
-        url = "http://localhost:8050/render.html?timeout=10&url=http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country="
+        url = "http://localhost:8050/render.html?filters=none&timeout=10&url=http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country="
         first_element_from_prev_page = 'adwdawds'
 
         while True:
@@ -52,7 +52,7 @@ class Collector(AbstractCollector):
             tree = lxml.html.fromstring(html)
 
             if first_element_from_prev_page != 'adwdawds':
-                url = "http://localhost:8050/render.html?timeout=10&lua_source={}&url=http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=".format(
+                url = "http://localhost:8050/render.html?filters=none&timeout=10&lua_source={}&url=http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=".format(
                     _script
                 )
 

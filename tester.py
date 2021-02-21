@@ -9,7 +9,7 @@ from collectors.web.com.ditatompel.collector import Collector as DitaCollector
 from collectors.web.com.nntime.collector import Collector as NNtimeCollector
 from collectors.web.name.hidemy.collector import Collector as HideMyNameCollector
 from collectors.web.net.proxydb.collector import Collector as ProxyDBCollector
-from collectors.web.top.kabak.collector import Collector as KabakCollector
+# from collectors.web.top.kabak.collector import Collector as KabakCollector
 
 
 uvloop.install()
@@ -23,7 +23,7 @@ print(collector)
 async def main():
     try:
         res = await collector.process_page(1)
-    except NameError:
+    except AttributeError:
         res = await collector.collect()
     print(res)
     await http_client.HttpClient.clean()

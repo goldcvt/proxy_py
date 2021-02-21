@@ -23,11 +23,14 @@ print(collector)
 async def main():
     try:
         res = await collector.process_page(1)
-        await http_client.HttpClient.clean()
     except AttributeError:
-        res = await collector.collect()
+        try:
+            res = await collector.collect()
+        except Exception:
+            await http_client.HttpClient.clean()
     except Exception:
         await http_client.HttpClient.clean()
+    await http_client.HttpClient.clean()
     print(res)
 
 asyncio.run(main())

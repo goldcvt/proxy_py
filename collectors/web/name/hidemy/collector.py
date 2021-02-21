@@ -6,10 +6,11 @@ import lxml.html
 
 
 class BaseHideMyNameCollector(PagesCollector):
-    def __init__(self, url):
+    def __init__(self, url, pages_count):
         super(BaseHideMyNameCollector, self).__init__()
         self.url = url
         self.processing_period = 30 * 60
+        self.pages_count = pages_count
 
     async def process_page(self, page_index):
         result = []

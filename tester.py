@@ -24,6 +24,7 @@ print(collector)
 async def main():
     try:
         res = await collector.process_page(1)
+        res = await collector.process_page(2)
         print(res)
         print(len(res))
     except AttributeError:

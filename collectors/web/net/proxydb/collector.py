@@ -55,10 +55,11 @@ class Collector(AbstractCollector):
                 url = "http://localhost:8050/render.html?filters=none&timeout=10&lua_source={}&url=http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=".format(
                     _script
                 )
-
             country_selector = tree.xpath("//table[contains(@class, 'table')]//td[position() mod 11 = 3]//abbr/text()")
             elements = tree.xpath("//table[contains(@class, 'table')]//td[position() mod 11 = 1]/text()")
             proto = tree.xpath("//table[contains(@class, 'table')]//td[position() mod 11 = 5]/text()")
+            print(len(elements))
+            print(len(country_selector))
             if elements[0] == first_element_from_prev_page:
                 break
             # 11

@@ -34,7 +34,7 @@ class BaseDitaTompelCollector(PagesCollector):
     async def process_page(self, page_index):
         result = []
         if page_index > 0:
-            self.url = "http://localhost:8050/render.html?filters=none&timeout=15&url=https://www.ditatompel.com/proxy/anonymity/elite"
+            self.url = "http://localhost:8050/render.html?wait=5&filters=none&timeout=15&url=https://www.ditatompel.com/proxy/anonymity/elite"
 
         resp = await http_client.get_text(url=self.url)
         tree = lxml.html.fromstring(resp)
@@ -64,4 +64,4 @@ class Collector(BaseDitaTompelCollector):
     __collector__ = True
 
     def __init__(self):
-        super(Collector, self).__init__("http://localhost:8050/render.html?filters=none&timeout=15&url=https://www.ditatompel.com/proxy/anonymity/anon", 2)
+        super(Collector, self).__init__("http://localhost:8050/render.html?wait=5&filters=none&timeout=15&url=https://www.ditatompel.com/proxy/anonymity/anon", 2)

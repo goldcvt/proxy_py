@@ -37,6 +37,7 @@ class BaseDitaTompelCollector(PagesCollector):
             self.url = "http://localhost:8050/render.html?wait=5&filters=none&timeout=15&url=https://www.ditatompel.com/proxy/anonymity/elite"
 
         resp = await http_client.get_text(url=self.url)
+        print(resp)
         tree = lxml.html.fromstring(resp)
         result += self.parse_from_splash_page(tree)
         _script = """

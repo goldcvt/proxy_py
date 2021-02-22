@@ -61,7 +61,7 @@ class Collector(AbstractCollector):
             # print(len(elements))
             # print(len(country_selector))
             if elements[0] == first_element_from_prev_page:
-                print("Broke cycle")
+                # print("Broke cycle")
                 break
             # 11
             for i in range(0, len(elements) - 1, 1):

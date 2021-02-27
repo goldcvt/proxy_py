@@ -41,8 +41,8 @@ class BaseNNTimeCollector(PagesCollector):
                 port_list += ["".join(str(port_variables[key]) for key in keys)]
 
             for i in range(0, len(elements) - 1, 1):
-                if elements[i].find("Russian") == -1:
-                    results.append(f"{elements[i].text}:{port_list[i]}")
+                #if elements[i].find("Russian") == -1:
+                results.append(f"{elements[i].text}:{port_list[i]}")
 
         except KeyError:
             pass

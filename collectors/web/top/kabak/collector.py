@@ -25,8 +25,7 @@ class BaseKabakCollector(PagesCollector):
         countries = tree.xpath("//div[@class='tb-body']/div[@class='tb-tr']/div[contains(@class, 'land')]/span/a/@href")
 
         for i in range(0, len(ports)-1, 1):
-            if countries[i] != '/proxy-in-russia':
-                result.append(f"{type_[i].strip().lower()}://{ips[i]}:{ports[i]}")
+            result.append(f"{type_[i].strip().lower()}://{ips[i]}:{ports[i]}")
         return result
 
 

@@ -29,7 +29,7 @@ class BaseDitaTompelCollector(PagesCollector):
             "//table[@id='proxyList']//tbody//a[contains(@href, 'https://www.ditatompel.com/proxy/country')]/text()"
         )
 
-        return [str(type_[i] + "://" + ips[i] + ports[i]) for i in range(0, len(type_)-1, 1) if country[i] != 'RU']
+        return [str(type_[i] + "://" + ips[i] + ports[i]) for i in range(0, len(type_)-1, 1)] # if country[i] != 'RU'
 
     async def process_page(self, page_index):
         result = []

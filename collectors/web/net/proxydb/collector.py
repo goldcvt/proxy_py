@@ -65,9 +65,9 @@ class Collector(AbstractCollector):
                 break
             # 11
             for i in range(0, len(elements) - 1, 1):
-                if country_selector[i].find("RU") != -1:
-                    result.append("{}://{}".format(proto[i],
-                                                   ''.join(''.join(elements[i].strip().split('\t')).split('\n'))))
+                # if country_selector[i].find("RU") != -1:
+                result.append("{}://{}".format(proto[i],
+                                               ''.join(''.join(elements[i].strip().split('\t')).split('\n'))))
             # ul.pagination > button.btn-outline-secondary
             first_element_from_prev_page = elements[0]
         return result
